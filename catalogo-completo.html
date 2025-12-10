@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Completo - goldstyle18k</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-catalogo-completo.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="catalog-header">
+        <div class="back-button">
+            <a href="index.html" class="btn-back">
+                <i data-lucide="arrow-left"></i>
+                Volver al Inicio
+            </a>
+        </div>
+        <div class="catalog-logo">
+            <img src="logo.png" alt="goldstyle18k" class="catalog-logo-img">
+            <h1 class="catalog-title">𝑪𝑨𝑻𝑨𝑳𝑶𝑮𝑶 𝑪𝑶𝑴𝑷𝑳𝑬𝑻𝑶</h1>
+            <p class="catalog-subtitle">goldstyle18k</p>
+        </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+        <button class="category-nav-btn active" data-category="anillos">
+            <i data-lucide="circle"></i>
+            Anillos (10)
+        </button>
+        <button class="category-nav-btn" data-category="CadenasHombre">
+            <i data-lucide="link"></i>
+            Cadenas Hombre (12)
+        </button>
+        <button class="category-nav-btn" data-category="cadenasRusticas">
+            <i data-lucide="link-2"></i>
+            Cadenas Rusticas (10)
+        </button>
+        <button class="category-nav-btn" data-category="candongas">
+            <i data-lucide="circle"></i>
+            Candongas (10)
+        </button>
+        <button class="category-nav-btn" data-category="dijes">
+            <i data-lucide="gem"></i>
+            Dijes (10)
+        </button>
+        <button class="category-nav-btn" data-category="topos">
+            <i data-lucide="circle-dot"></i>
+            Topos (10)
+        </button>
+        <button class="category-nav-btn" data-category="herrajes">
+            <i data-lucide="settings"></i>
+            Herrajes (10)
+        </button>
+        <button class="category-nav-btn" data-category="pulseras">
+            <i data-lucide="circle-ellipsis"></i>
+            Pulseras (12)
+        </button>
+        <button class="category-nav-btn" data-category="rosarios">
+            <i data-lucide="circle-dashed"></i>
+            Rosarios (10)
+        </button>
+        <button class="category-nav-btn" data-category="Argollas">
+            <i data-lucide="circle"></i>
+            Argollas (10)
+        </button>
+        <button class="category-nav-btn" data-category="oro18kpersonalizados">
+            <i data-lucide="sun"></i>
+            Oro 18k personalizado (10)
+        </button>
+        <button class="category-nav-btn" data-category="CadenasMujer">
+            <i data-lucide="sparkles"></i>
+            Cadenas Mujer (10)
+        </button>
+        <button class="category-nav-btn" data-category="van-cleef">
+            <i data-lucide="clover"></i>
+            Van Cleef (10)
+        </button>
+        <button class="category-nav-btn" data-category="tobilleras">
+    <i data-lucide="footprints"></i>
+    Tobilleras (10)
+</button>
+
+    </div>
+
+    <!-- Product Counter -->
+    <div class="product-counter">
+        <span id="product-count">Mostrando <strong>10</strong> productos</span>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="productsGrid">
+        <!-- Los productos se generarán con JavaScript -->
+    </div>
+
+    <!-- Contact WhatsApp Flotante -->
+    <div class="whatsapp-float">
+        <button class="btn-whatsapp-float" onclick="contactarWhatsApp()">
+            <i data-lucide="message-circle"></i>
+            Asesoría Personalizada
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Estructura de datos de productos (10 por categoria)
+        const products = {
+    anillos : [
+        { id: 1, nombre: "Anillo Grueso", imagen: "anillo1.png", material: "Oro laminado Italiano 18k", precio: "$260.000", features: ["5 años de garantia"] },
+        { id: 2, nombre: "Anillo Grueso", imagen: "anillo2.png", material: "Oro laminado Italiano 18k", precio: "$260.000", features: ["5 años de garantia"] },
+        { id: 3, nombre: "Anillo Grueso", imagen: "anillo3.png", material: "Oro laminado Italiano 18k", precio: "$260.000", features: ["5 años de garantia"] },
+        { id: 4, nombre: "Anillo Grueso", imagen: "anillo4.png", material: "Oro laminado Italiano 18k", precio: "$260.000", features: ["5 años de garantia"] },
+        { id: 5, nombre: "Anillos tejidos", imagen: "anillo5.png", material: "Oro laminado Italiano 18k", precio: "$60.000", features: ["Tejidos"], badge: "✨ Nuevo" },
+        { id: 6, nombre: "Anillo Vintage", imagen: "anillo6.png", material: "Oro laminado Italiano 18k", precio: "$145.900", features: ["Vintage", "Antiguo"] },
+        { id: 7, nombre: "Anillo Grueso Dorado", imagen: "anillo7.png", material: "Oro laminado Italiano 18k", precio: "$98.900", features: ["Grueso", "Boldado"] },
+        { id: 8, nombre: "Anillo Serpiente", imagen: "anillo8.png", material: "Oro laminado Italiano 18k", precio: "$112.900", features: ["Serpiente", "Moderno"] },
+        { id: 9, nombre: "Anillo Flor", imagen: "anillo9.png", material: "Oro laminado Italiano 18k", precio: "$134.900", features: ["Flor", "Delicado"] },
+        { id: 10, nombre: "Anillo Espiral", imagen: "anillo10.png", material: "Oro laminado Italiano 18k", precio: "$103.900", features: ["Espiral", "Elegante"] }
+    ],
+
+    cadenasRusticas: [
+        { id: 1, nombre: "Cadena rustica rolex", imagen: "cadena1.png", material: "Oro laminado Italiano 18k - 60cm", precio: "$800.000", features: [] },
+        { id: 2, nombre: "Cadena rustica", imagen: "cadena2.png", material: "Oro laminado Italiano 18k - 45cm", precio: "$800.000", features: [] },
+        { id: 3, nombre: "Cadena rustica rolex", imagen: "cadena3.png", material: "Oro laminado Italiano 18k - 50cm", precio: "$800.000", features: [] },
+        { id: 4, nombre: "Cadena rustica", imagen: "cadena4.png", material: "Oro laminado Italiano 18k - 55cm", precio: "$800-dije370", features: [], badge: "✨ Nuevo" },
+        { id: 5, nombre: "Cadena rustica", imagen: "cadena5.png", material: "Oro laminado Italiano 18k - 65cm", precio: "$750.000", features: [] },
+        { id: 6, nombre: "Cadena rustica", imagen: "cadena6.png", material: "Oro laminado Italiano 18k - 50cm", precio: "$780-dije280", features: [] },
+        { id: 7, nombre: "Cadena rustica", imagen: "cadena7.png", material: "Oro laminado Italiano 18k - 48cm", precio: "$750.000", features: [] },
+        { id: 8, nombre: "Cadena rustica", imagen: "cadena8.png", material: "Oro laminado Italiano 18k - 52cm", precio: "$750-dije370", features: [] },
+        { id: 9, nombre: "Cadena rustica 3 oros", imagen: "cadena9.png", material: "Oro laminado Italiano 18k", precio: "$730.000", features: [] },
+        { id: 10, nombre: "Cadenas rusticas ", imagen: "cadena10.png", material: "Oro laminado Italiano 18k - 60cm", precio: "$780.000", features: ["780 en adelante"] }
+    ],
+
+    CadenasHombre: [
+        { id: 1, nombre: "Cadena Gucci especial-Dije tio rico", imagen: "cadenah1.png", material: "Oro laminado Italiano 18k", precio: "$590-$320", features: ["60cm", "3mm"] },
+        { id: 2, nombre: "Cadena escalera ojos-Dije cruz", imagen: "cadenah2.png", material: "Oro laminado Italiano 18k", precio: "$340-$150", features: ["60cm", "3mm"] },
+        { id: 3, nombre: "Cadena cartier-Dije leon plano", imagen: "cadenah3.png", material: "Oro laminado Italiano 18k", precio: "$370-$170", features: [] },
+        { id: 4, nombre: "Cadenas y Dijes", imagen: "cadenah4.png", material: "Dijes(60-70-70-75)", precio: "$190-150(2)-190", features: ["precios de izquierda a derecha"], badge: "✨ Nuevo" },
+        { id: 5, nombre: "Cadena escalera ojos-Dije caballo", imagen: "cadenah5.png", material: "Oro laminado Italiano 18k", precio: "$340-$85", features: ["60cm", "3mm"] },
+        { id: 6, nombre: "Cadena Cartier martillada-Dije Cristo Madero", imagen: "cadenah6.png", material: "Oro laminado Italiano 18k", precio: "$370-$170", features: ["60cm", "4mm"] },
+        { id: 7, nombre: "Cadena arandelas maciza", imagen: "cadenah7.png", material: "Oro laminado Italiano 18k", precio: "$360.000", features: ["60cm"] },
+        { id: 8, nombre: "CadenaR585-DijeR866", imagen: "cadenah8.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features: [] },
+        { id: 9, nombre: "Cadena militar diamantada 60cm", imagen: "cadenah9.png", material: "Oro laminado Italiano 18k", precio: "$270-330", features: ["2.5mm","3mm"] },
+        { id: 10, nombre: "cadena tejido Chino 3 carriles", imagen: "cadenah10.png", material: "Oro laminado Italiano 18k", precio: "$595.000", features: [] },
+        { id: 11, nombre: "Cadena Gucci ref747", imagen: "cadenah11.png", material: "Oro laminado Italiano 18k", precio: "$250.000", features: ["45cmm"] },
+        { id: 12, nombre: "Cadena tejido Chino", imagen: "cadenah12.png", material: "Oro laminado Italiano 18k", precio: "$190.000", features: ["45cm"] },
+    ],
+
+    candongas: [
+        { id: 1, nombre: "Candonga 541", imagen: "candonga1.png", material: "Oro laminado Italiano 18k", precio: "$145.000", features: [] },
+        { id: 2, nombre: "Candonga 598", imagen: "candonga2.png", material: "Oro laminado Italiano 18k", precio: "$100.000", features: [] },
+        { id: 3, nombre: "Candonga 610", imagen: "candonga3.png", material: "Oro laminado Italiano 14k", precio: "$120.000", features: [] },
+        { id: 4, nombre: "Candonga 644", imagen: "candonga4.png", material: "Oro laminado Italiano 18k", precio: "$80.000", features: [] },
+        { id: 5, nombre: "Candonga 627", imagen: "candonga5.png", material: "Oro laminado Italiano 18k", precio: "$125.000", features: [] },
+        { id: 6, nombre: "Candonga 612", imagen: "candonga6.png", material: "Oro laminado Italiano 18k", precio: "$110.000", features: [] },
+        { id: 7, nombre: "Candonga 613", imagen: "candonga7.png", material: "Oro laminado Italiano 18k", precio: "$100.000", features: [] },
+        { id: 8, nombre: "Candonga 637", imagen: "candonga8.png", material: "Oro laminado Italiano 18k", precio: "$120.000", features: [] },
+        { id: 9, nombre: "Candonga trébol variedad de colores ", imagen: "candonga9.png", material: "Oro laminado Italiano 18k", precio: "$150.000", features: [] },
+        { id: 10, nombre: "Candongas Bvulgari", imagen: "candonga10.png", material: "Oro laminado Italiano 18k", precio: "$170.000", features: [], badge: "✨ Nuevo" }
+    ],
+
+   dijes: [
+    { id: 1, nombre: "Dijes", imagen: "dije1.png", material: "Oro laminado Italiano 18k", precio: "$85.000", features: ["85 en adelante"] },
+    { id: 2, nombre: "Dijes", imagen: "dije2.png", material: "Oro laminado Italiano 18k", precio: "$85.000", features: ["85 en adelante"] },
+    { id: 3, nombre: "Dijes", imagen: "dije3.png", material: "Oro laminado Italiano 18k", precio: "$85.000", features: ["85 en adelante"] },
+    { id: 4, nombre: "Dije grande-dije redondo pequeno-dije cuadrado", imagen: "dije4.png", material: "Oro laminado Italiano 18k", precio: "$145-$95-$145", features: [] },
+    { id: 5, nombre: "Dije Virgen María", imagen: "dije5.png", material: "Oro laminado Italiano 18k", precio: "$123.900", features: ["Virgen María", "Religioso"] },
+    { id: 6, nombre: "Dije Llave del Cielo", imagen: "dije6.png", material: "Oro laminado Italiano 18k", precio: "$94.900", features: ["Llave", "Simbólico"], badge: "✨ Nuevo" },
+    { id: 7, nombre: "Dije Flor", imagen: "dije7.png", material: "Oro laminado Italiano 18k", precio: "$87.900", features: ["Flor", "Delicado"] },
+    { id: 8, nombre: "Dije Ancla", imagen: "dije8.png", material: "Oro laminado Italiano 18k", precio: "$78.900", features: ["Ancla", "Marina"] },
+    { id: 9, nombre: "Dije Luna", imagen: "dije9.png", material: "Oro laminado Italiano 18k", precio: "$82.900", features: ["Luna", "Mística"] },
+    { id: 10, nombre: "Dije Estrella", imagen: "dije10.png", material: "Oro laminado Italiano 18k", precio: "$76.900", features: ["Estrella", "Celestial"] }
+],
+               topos: [
+        { id: 1, nombre: "Topos con rosca de seguridad ", imagen: "topos1.png", material: "Oro laminado Italiano 18k", precio: "$90 2X$170", features: [] },
+        { id: 2, nombre: "Topos con rosca de seguridad ", imagen: "topos2.png", material: "Oro laminado Italiano 18k", precio: "$90 2X$170", features: [] },
+        { id: 3, nombre: "Topos con rosca de seguridad ", imagen: "topos3.png", material: "Oro laminado Italiano 18k", precio: "$90 2X$170", features: [] },
+        { id: 4, nombre: "Topos con rosca de seguridad ", imagen: "topos4.png", material: "Oro laminado Italiano 14k", precio: "$90 2X$170", features: [] },
+        { id: 5, nombre: "Topos con rosca de seguridad ", imagen: "topos9.png", material: "Oro laminado Italiano 18k", precio: "$90 2X$170", features: [], badge: "✨ Nuevo" },
+        { id: 6, nombre: "Topos con rosca de seguridad ", imagen: "topos6.png", material: "Oro laminado Italiano 18k", precio: "$90 2X$170", features: [] },
+        { id: 7, nombre: "Escapulario Angel", imagen: "", material: "Oro laminado Italiano 18k", precio: "$143.900", features: ["Ángel", "Protección"] },
+        { id: 8, nombre: "Escapulario Doble", imagen: "", material: "Oro laminado Italiano 18k", precio: "$189.900", features: ["Doble", "Completo"] },
+        { id: 9, nombre: "Escapulario con Perla", imagen: "", material: "Oro laminado Italiano 18k + Perla", precio: "$178.900", features: ["Perla", "Premium"] },
+        { id: 10, nombre: "Escapulario Clásico", imagen: "", material: "Oro laminado Italiano 18k", precio: "$112.900", features: ["Clásico", "Tradicional"] }
+    ],
+
+            herrajes: [
+    { id: 1, nombre: "Herrajes de figuras", imagen: "herraje1.png", material: "Oro laminado Italiano 18k", precio: "$50.000", features: [] },
+    { id: 2, nombre: "Herrajes religiosos", imagen: "herraje2.png", material: "Oro laminado Italiano 18k", precio: "$50.000", features: [] },
+    { id: 3, nombre: "Herrajes religiosos", imagen: "herraje3.png", material: "Oro laminado Italiano 18k", precio: "$50.000", features: [] },
+    { id: 4, nombre: "Herrajes figuras", imagen: "herraje4.png", material: "Oro laminado Italiano 18k", precio: "$50.000", features: [] },
+    { id: 5, nombre: "Herrajes religiosos", imagen: "herraje5.png", material: "Oro laminado Italiano 18k", precio: "$50.000", features: [] },
+    { id: 6, nombre: "Cierres de Resorte", imagen: "herraje6.png", material: "Oro laminado Italiano 18k", precio: "$24.900", features: ["Seguros", "Resistentes"] },
+    { id: 7, nombre: "Bisagras Mini", imagen: "herraje7.png", material: "Oro laminado Italiano 18k", precio: "$19.900", features: ["Pequeñas", "Precisas"] },
+    { id: 8, nombre: "Cadenitas Pequeñas", imagen: "herraje8.png", material: "Oro laminado Italiano 18k", precio: "$45.900", features: ["Finas", "Decorativas"] },
+    { id: 9, nombre: "Extendedores de Cadena", imagen: "herraje9.png", material: "Oro laminado Italiano 18k", precio: "$34.900", features: ["Prácticos", "Dorados"] },
+    { id: 10, nombre: "Kit Completo Herrajes", imagen: "herraje10.png", material: "Oro laminado Italiano 18k", precio: "$89.900", features: ["Completo", "Variado"], badge: "✨ Kit" }
+],
+
+                pulseras: [
+        { id: 1, nombre: "manilla con herraje medalla divino", imagen: "manilla1.png", material: "Oro laminado Italiano 18k - Ajustable", precio: "$130.000", features: ["B5mm", "4mm"] },
+        { id: 2, nombre: "Pulseras cubanas para hombre ", imagen: "manilla2.png", material: "Oro laminado Italiano 18k", precio: "$260-$150", features: ["Cubanas"] },
+        { id: 3, nombre: "Pulseras rústicas", imagen: "pulsera3.png", material: "Oro laminado Italiano 18k", precio: "$320.000", features: [] },
+        { id: 4, nombre: "Pulsera 334-pulsera 335", imagen: "pulsera4.png", material: "Oro laminado Italiano 18k", precio: "$295-$280", features: ["4mm", "3mm"] },
+        { id: 5, nombre: "Pulsera tejida balin#5", imagen: "pulsera5.png", material: "Oro laminado Italiano 18k - diamantado", precio: "$430.000", features: [] },
+        { id: 6, nombre: "Pulsera", imagen: "pulsera6.png", material: "Oro laminado Italiano 18k", precio: "$230.000", features: [], badge: "✨ Nuevo" },
+        { id: 7, nombre: "Pulsera", imagen: "pulsera7.png", material: "Oro laminado Italiano 18k", precio: "$180.000", features: [] },
+        { id: 8, nombre: "Pulsera", imagen: "pulsera8.png", material: "Oro laminado Italiano 18k", precio: "$175.000", features: [] },
+        { id: 9, nombre: "Pulsera", imagen: "pulsera9.png", material: "Oro laminado Italiano 18k", precio: "$150.000", features: [] },
+        { id: 10, nombre: "Pulseras rusticas", imagen: "pulsera10.png", material: "Oro laminado Italiano 18k", precio: "$320.000", features: [] },
+        { id: 11, nombre: "Balin diamantado idéntico al de Oro18k", imagen: "pulsera11.png", material: "Oro laminado Italiano 18k", precio: "$150.000", features: [] },
+        { id: 12, nombre: "Puls Gucci + extensión ref115", imagen: "pulsera12.png", material: "Oro laminado Italiano 18k", precio: "$190.000", features: [] },
+       
+    ],
+
+           rosarios: [
+    { id: 1, nombre: "Rosario 65cm x 6mm", imagen: "rosario1.png", material: "Oro laminado Italiano 18k", precio: "$490.000", features: [] },
+    { id: 2, nombre: "Rosario 65cm x 3mm", imagen: "rosario3.png", material: "Oro laminado Italiano 18k", precio: "$250.000", features: [] },
+    { id: 3, nombre: "Rosarios 65cm", imagen: "rosario4.png", material: "Oro laminado Italiano 18k", precio: "$210-490-480", features: ["Precios de izquierda a derecha",] },
+    { id: 4, nombre: "Rosario Pequeño Bolsillo", imagen: "rosario2.png", material: "Oro laminado Italiano 18k", precio: "$67.900", features: ["Pequeño", "Portátil"] },
+    { id: 5, nombre: "Rosario San Benito", imagen: "rosario5.png", material: "Oro laminado Italiano 18k", precio: "$134.900", features: ["San Benito", "Protección"] },
+    { id: 6, nombre: "Rosario con Cristal", imagen: "rosario6.png", material: "Oro laminado Italiano 18k", precio: "$156.900", features: ["Cristal", "Elegante"], badge: "✨ Premium" },
+    { id: 7, nombre: "Rosario Filigrana", imagen: "rosario7.png", material: "Oro laminado Italiano 18k", precio: "$143.900", features: ["Filigrana", "Artesanal"] },
+    { id: 8, nombre: "Rosario Cuentas Pequeñas", imagen: "rosario8.png", material: "Oro laminado Italiano 18k", precio: "$78.900", features: ["Pequeñas", "Delicadas"] },
+    { id: 9, nombre: "Rosario Bicolor", imagen: "rosario9.png", material: "Oro laminado Italiano 18k", precio: "$123.900", features: ["Bicolor", "Moderno"] },
+    { id: 10, nombre: "Rosario Clásico", imagen: "rosario10.png", material: "Oro laminado Italiano 18k", precio: "$94.900", features: ["Clásico", "Tradicional"] }
+],
+
+Argollas: [
+    { id: 1, nombre: "Argollas", imagen: "argolla1.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features: ["garantia por vida", "marcadas con nombre o fecha"], badge: "✨ Nuevo" },
+    { id: 2, nombre: "Argollas", imagen: "argolla2.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 3, nombre: "Argollas", imagen: "argolla3.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 4, nombre: "Argollas", imagen: "argolla4.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 5, nombre: "Argollas", imagen: "argolla5.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 6, nombre: "Argollas", imagen: "argolla6.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 7, nombre: "Argollas", imagen: "argolla7.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"], badge: "✨ Travel" },
+    { id: 8, nombre: "Argollas", imagen: "argolla8.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 9, nombre: "Argollas", imagen: "argolla9.png", material: "Oro laminado Italiano 18k", precio: "$280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] },
+    { id: 10, nombre: "Argollas", imagen: "argolla10.png", material: "Oro laminado Italiano 18k", precio: "280.000", features:  ["garantia por vida", "marcadas con nombre o fecha"] }
+],
+
+
+          oro18kpersonalizados: [
+    { id: 1, nombre: "Anillos Personalizados", imagen: "oro1.png", material: "Oro 18k Nacional", precio: "$2.600.000", features: ["Diseño3D", "5gramos"] },
+    { id: 2, nombre: "Anillos Personalizados", imagen: "oro2.png", material: "Oro 18k Nacional", precio: "$2.600.000", features: ["Diseño3D", "5gramos"] },
+    { id: 3, nombre: "Anillos Personalizados", imagen: "oro3.png", material: "Oro 18k Nacional", precio: "$2.600.000", features: ["Diseño3D", "5gramos"] },
+    { id: 4, nombre: "Anillos Personalizados", imagen: "oro4.png", material: "Oro 18k Nacional", precio: "$2.600.000", features: ["Diseño3D", "gramos"] },
+    { id: 5, nombre: "Tobillera Bolas", imagen: "oro5.png", material: "Oro laminado Italiano 18k", precio: "$78.900", features: ["Bolas", "Moderna"] },
+    { id: 6, nombre: "Tobillera Infinito", imagen: "oro6.png", material: "Oro laminado Italiano 18k", precio: "$94.900", features: ["Infinito", "Simbólica"], badge: "✨ Nuevo" },
+    { id: 7, nombre: "Tobillera Doble Cadena", imagen: "oro7.png", material: "Oro laminado Italiano 18k", precio: "$112.900", features: ["Doble", "Moderna"] },
+    { id: 8, nombre: "Tobillera Serpiente", imagen: "tobillera8.png", material: "Oro laminado Italiano 18k", precio: "$134.900", features: ["Serpiente", "Elegante"] },
+    { id: 9, nombre: "Tobillera Con Dijes", imagen: "tobillera9.png", material: "Oro laminado Italiano 18k", precio: "$106.900", features: ["Dijes", "Decorativa"] },
+    { id: 10, nombre: "Tobillera Ajustable", imagen: "tobillera10.png", material: "Oro laminado Italiano 18k", precio: "$82.900", features: ["Ajustable", "Cómoda"] }
+],
+
+            CadenasMujer: [
+    { id: 1, nombre: "Cadenas y Dijes", imagen: "cadenam1.png", material: "Dijes(75-90-80)", precio: "$200-$145-$205-$260", features: ["Precios de izquierda a derecha"] },
+    { id: 2, nombre: "Cadena arandelas diamantadas-Dije dolar", imagen: "cadenam2.png", material: "Oro laminado Italiano 18k", precio: "$160-$95", features: ["45cm"] },
+    { id: 3, nombre: "Cadena 45cm", imagen: "cadenam3.png", material: "Oro laminado Italiano 18k", precio: "$200-$130-$175-$150", features: ["Precios de izquierda a derecha"] },
+    { id: 4, nombre: "Cadena arandelas diamantada 45cm", imagen: "cadenam4.png", material: "Oro laminado Italiano 18k", precio: "$180-dije$110", features: [] },
+    { id: 5, nombre: "Cadena escalera 2x1", imagen: "cadenam5.png", material: "Oro laminado Italiano 18k", precio: "$200-dije190", features: ["45cm"] },
+    { id: 6, nombre: "Cadena Singapur", imagen: "cadenam6.png", material: "Oro laminado Italiano 18k", precio: "$140-dije85", features: ["50cm x 2mm"], badge: "✨ Nuevo" },
+    { id: 7, nombre: "Topos Óvalos", imagen: "topo7.png", material: "Oro laminado Italiano 18k", precio: "$94.900", features: ["Óvalos", "Elegantes"] },
+    { id: 8, nombre: "Topos Hoja", imagen: "topo8.png", material: "Oro laminado Italiano 18k", precio: "$87.900", features: ["Hoja", "Moderna"] },
+    { id: 9, nombre: "Topos Cruz", imagen: "topo9.png", material: "Oro laminado Italiano 18k", precio: "$76.900", features: ["Cruz", "Religiosos"] },
+    { id: 10, nombre: "Topos Gotitas", imagen: "topo10.png", material: "Oro laminado Italiano 18k", precio: "$84.900", features: ["Gotitas", "Elegantes"] }
+],
+
+            
+                        "van-cleef": [
+    { id: 1, nombre: "Pulsera Van Cleef Trébol", imagen: "vancleef1.png", material: "Oro laminado Italiano 18k", precio: "$130.000", features: ["Desde 130 en adelante"], badge: "✨ Hype" },
+    { id: 2, nombre: "Van Cleef Collar Cruz", imagen: "vanclef2.png", material: "Oro laminado Italiano 18k", precio: "$234.900", features: ["Cruz", "Van Cleef"] },
+    { id: 3, nombre: "Van Cleef Vintage", imagen: "vanclef3.png", material: "Oro laminado Italiano 18k", precio: "$289.900", features: ["Vintage", "Premium"] },
+    { id: 4, nombre: "Van Cleef Corazón", imagen: "vanclef4.png", material: "Oro laminado Italiano 18k", precio: "$201.900", features: ["Corazón", "Romántico"] },
+    { id: 5, nombre: "Van Cleef Mariposa", imagen: "vanclef5.png", material: "Oro laminado Italiano 18k", precio: "$245.900", features: ["Mariposa", "Elegante"] },
+    { id: 6, nombre: "Van Cleef Pulsera Trébol", imagen: "vanclef6.png", material: "Oro laminado Italiano 18k", precio: "$278.900", features: ["Trébol", "Pulsera"], badge: "✨ Nuevo" },
+    { id: 7, nombre: "Van Cleef Mediano", imagen: "vanclef7.png", material: "Oro laminado Italiano 18k", precio: "$189.900", features: ["Mediano", "Versátil"] },
+    { id: 8, nombre: "Van Cleef Pequeño", imagen: "vanclef8.png", material: "Oro laminado Italiano 18k", precio: "$145.900", features: ["Pequeño", "Delicado"] },
+    { id: 9, nombre: "Van Cleef con Cadena", imagen: "vanclef9.png", material: "Oro laminado Italiano 18k", precio: "$312.900", features: ["Con Cadena", "Completo"] },
+    { id: 10, nombre: "Van Cleef Espacio", imagen: "vanclef10.png", material: "Oro laminado Italiano 18k", precio: "$223.900", features: ["Especial", "Coleccionable"] }
+],
+
+tobilleras: [
+    { id: 1, nombre: "tobillera denario de protección", imagen: "tobillera1.png", material: "Oro laminado Italiano 18k", precio: "$160.000", features: [] },
+    { id: 2, nombre: "Tobillera china destellos", imagen: "tobillera2.png", material: "Oro laminado Italiano 18k", precio: "$150.000", features: ["25cm X 2mm"] },
+    { id: 3, nombre: "Tobillera aros balín diamantado", imagen: "tobillera3.png", material: "Oro laminado Italiano 18k", precio: "$130.000", features: [] },
+    { id: 4, nombre: "Tobillera cubana", imagen: "tobillera4.png", material: "Oro laminado Italiano 18k", precio: "$110.000", features: ["25cm X 1.5mm"] },
+    { id: 5, nombre: "Tobillera cubana continua", imagen: "tobillera5.png", material: "Oro laminado Italiano 18k", precio: "$250.000", features: ["25cm X 4mm"] },
+    { id: 6, nombre: "Tobillera Infinito", imagen: "tobillera6.png", material: "Oro laminado Italiano 18k", precio: "$89.900", features: ["Infinito"] },
+    { id: 7, nombre: "Tobillera Mariposa", imagen: "tobillera7.png", material: "Oro laminado Italiano 18k", precio: "$88.900", features: ["Mariposa"] },
+    { id: 8, nombre: "Tobillera Ojo Turco", imagen: "tobillera8.png", material: "Oro laminado Italiano 18k", precio: "$102.900", features: ["Protección"] },
+    { id: 9, nombre: "Tobillera con Dijes", imagen: "tobillera9.png", material: "Oro laminado Italiano 18k", precio: "$99.900", features: ["Dijes"] },
+    { id: 10, nombre: "Tobillera Ajustable", imagen: "tobillera10.png", material: "Oro laminado Italiano 18k", precio: "$84.900", features: ["Ajustable"] }
+],
+        };
+
+
+        // Función para generar tarjeta de producto
+        function crearTarjetaProducto(producto, categoria) {
+            const badge = producto.badge ? `<div class="product-badge new">${producto.badge}</div>` : `<div class="product-badge">18k</div>`;
+            const features = producto.features.map(f => `<span class="feature">${f}</span>`).join('');
+            
+            return `
+                <div class="product-card" data-category="${categoria}">
+                    <div class="product-image">
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                        ${badge}
+                        <div class="product-overlay">
+                            <button class="btn-view" onclick="verProducto('${producto.nombre}')">
+                                <i data-lucide="eye"></i>
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${producto.nombre}</h3>
+                        <p class="product-material">${producto.material}</p>
+                        <div class="product-features">
+                            ${features}
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">${producto.precio}</span>
+                            <button class="btn-whatsapp" onclick="enviarWhatsApp('${producto.nombre}')">
+                                <i data-lucide="message-circle"></i>
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Función para renderizar productos
+        function renderizarProductos(categoria) {
+            const grid = document.getElementById('productsGrid');
+            const productosCategoria = products[categoria];
+            
+            if (!productosCategoria) return;
+            
+            grid.innerHTML = productosCategoria.map((producto, index) => 
+                crearTarjetaProducto(producto, categoria)
+            ).join('');
+            
+            // Re-inicializar iconos de Lucide
+            lucide.createIcons();
+        }
+
+        // Inicializar con la primera categoria
+        renderizarProductos('anillos');
+
+        // Funcionalidad de categorias
+        const categoryNavButtons = document.querySelectorAll('.category-nav-btn');
+        const productCountSpan = document.getElementById('product-count');
+
+        categoryNavButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryNavButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const categoria = button.dataset.category;
+                renderizarProductos(categoria);
+                
+                productCountSpan.innerHTML = `Mostrando <strong>10</strong> productos`;
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Funciones de WhatsApp
+        function enviarWhatsApp(producto) {
+            const mensaje = `Hola! Me interesa el producto: ${producto}\n\nMe gustaría obtener más información sobre disponibilidad y precios.\n\nCatálogo: goldstyle18k`;
+            const url = `https://wa.me/573015622339?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        function contactarWhatsApp() {
+            const mensaje = "Hola! Me gustaría recibir asesoría personalizada sobre sus productos de joyería. Necesito información sobre disponibilidad y precios.";
+            const url = `https://wa.me/573015622339?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        function verProducto(producto) {
+            const mensaje = `Hola! Me interesa conocer más detalles del producto: ${producto}\n\n¿Podrían proporcionarme:\n- Más imágenes\n- Medidas exactas\n- Materiales específicos\n- Disponibilidad en diferentes tallas`;
+            const url = `https://wa.me/573015622339?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
