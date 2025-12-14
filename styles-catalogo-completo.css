@@ -81,7 +81,7 @@ body {
 
 .category-nav-container {
     background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%);
-    border-bottom: 2px solid rgba(255, 215, 0, 0.3); /* Rojo elegante para joyería */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3); 
     padding: 0;
     position: relative;
     overflow: hidden;
